@@ -66,7 +66,7 @@
 				<section id="whoami">
 					<h2>whoami</h2>
 
-					<pre><code data-trim class="javascript">
+					<pre><code data-trim class="language-js">
 const christophe = {
   ηλικία:              38.9637234770705,
   οικογένεια:          { γυναίκα: 'Élodie', υιός: 'Maxence' },
@@ -306,21 +306,21 @@ Promise.all([
             <h2>Rest &amp; Spread</h2>
 
             <pre><code data-keep-tags="u" class="language-js">
-function winners(first, runnerUp, <u>...others</u>) {
-  console.log(first, runnerUp, others)
+function winners(boss, realBoss, <u>...contenders</u>) {
+  console.log(boss, realBoss, contenders)
 }
-winners('alice', 'bob', 'claire', 'david')
-// => 'alice', 'bob', <u>['claire', 'david']</u>
+winners('Ζεύς', 'Ἥρα', 'Μῆτις', 'Θέμις', 'Λητώ')
+// => 'Ζεύς', 'Ἥρα', <u>['Μῆτις', 'Θέμις', 'Λητώ']</u>
 
 var arr1 = ['one', 'two']
 var arr2 = ['three', 'four']
 arr1.push(<u>...arr2</u>) // => 4
 arr1 // => ['one', 'two', 'three', 'four']
 
-var defaults = { first: 'John', last: 'Doe', age: 42 }
-var trainer = { last: 'Smith', age: 35 }
-trainer = { <u>...defaults</u>, <u>...trainer</u>, age: 36 }
-// => { first: 'John', last: 'Smith', age: 36 }
+var helen = { with: 'Μενέλαος', location: 'Σπάρτη', mother: 'Λήδα', stable: true }
+var events = { with: 'Πάρις', location: 'Τροία' }
+var trouble = { <u>...helen</u>, <u>...events</u>, stable: false }
+// => { with: 'Πάρις', location: 'Τροία', mother: 'Λήδα', stable: false }
 
 var nodeListAsArray = <u>[...</u>document.querySelectorAll('h1')<u>]</u>
             </code></pre>
