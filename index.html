@@ -68,13 +68,13 @@
 
 					<pre><code data-trim class="language-js">
 const christophe = {
-  ηλικία:              38.9637234770705,
-  οικογένεια:          { γυναίκα: 'Élodie', υιός: 'Maxence' },
-  τοποθεσία:           'Paris, FR',
-  εταιρεία:            'Delicious Insights',
-  προπονήσεις:         ['360° JS', 'Node.js', '360° Git'],
-  webΔεδομένου:        1995,
-  ισχυρίζεταιΌτιΗΦήμη: [
+  ηλικία:      38.9637234770705,
+  οικογένεια:  { γυναίκα: 'Élodie', υιός: 'Maxence' },
+  τοποθεσία:   'Paris, FR',
+  εταιρεία:    'Delicious Insights',
+  σεμινάρια:   ['360° JS', 'Node.js', '360° Git'],
+  στοWebΑπό:   1995,
+  ΔιασημοςΓια: [
     'Prototype.js',
     'Ruby On Rails',
     'Prototype and Script.aculo.us',
@@ -247,15 +247,11 @@ class TodoItem extends Component {
             <h2>Destructuring</h2>
 
             <pre><code data-keep-tags="u" class="language-js">
-const <u>{ activeCount } =</u> this.props
-…
 const { filter<u>: selectedFilter</u>, onShow } = this.props
             </code></pre>
 
             <pre><code data-keep-tags="u" class="language-js">
 const <u>[, filters] =</u> output.props.children
-…
-const <u>[,, clear] =</u> output.props.children
             </code></pre>
 
             <pre><code data-keep-tags="u" class="language-js">
@@ -287,7 +283,7 @@ const <u>[
             </code></pre>
 
             <pre data-keep-tags="u"><code class="language-js">
-const HistoryDayGoal = (<u>{ goal: { name, units }, stats: [progress, target] }</u>) => {
+const HistDayGoal = (<u>{ goal: { name, units }, stats: [progress, target] }</u>) => {
   // …
 }
             </code></pre>
@@ -297,7 +293,7 @@ Promise.all([
   Entry.tags(), Entry.count().exec(), Entry.getEntries(req.query)
 ])
 .then((<u>[tags, entryCount, entries]</u>) => {
-  res.render('entries/index', { pageTitle: 'Bookmarks', entries, entryCount, tags })
+  res.render('entries/index', { title: 'Bookmarks', entries, entryCount, tags })
 })
               </code></pre>
           </section>
@@ -312,15 +308,13 @@ function winners(boss, realBoss, <u>...contenders</u>) {
 winners('Ζεύς', 'Ἥρα', 'Μῆτις', 'Θέμις', 'Λητώ')
 // => 'Ζεύς', 'Ἥρα', <u>['Μῆτις', 'Θέμις', 'Λητώ']</u>
 
-var arr1 = ['one', 'two']
-var arr2 = ['three', 'four']
-arr1.push(<u>...arr2</u>) // => 4
-arr1 // => ['one', 'two', 'three', 'four']
+var arr1 = ['one', 'two'], arr2 = ['three', 'four']
+arr1.push(<u>...arr2</u>) // => 4, arr1 is ['one', 'two', 'three', 'four']
 
-var helen = { with: 'Μενέλαος', location: 'Σπάρτη', mother: 'Λήδα', stable: true }
-var events = { with: 'Πάρις', location: 'Τροία' }
-var trouble = { <u>...helen</u>, <u>...events</u>, stable: false }
-// => { with: 'Πάρις', location: 'Τροία', mother: 'Λήδα', stable: false }
+var helen = { rel: 'Μενέλαος', loc: 'Σπάρτη', mother: 'Λήδα', stable: true }
+var kidnapping = { rel: 'Πάρις', loc: 'Τροία' }
+var trouble = { <u>...helen</u>, <u>...kidnapping</u>, stable: false }
+// => { rel: 'Πάρις', loc: 'Τροία', mother: 'Λήδα', stable: false }
 
 var nodeListAsArray = <u>[...</u>document.querySelectorAll('h1')<u>]</u>
             </code></pre>
@@ -331,7 +325,7 @@ return <u>[</u>{ id: …, completed: …, text: … }<u>, ...state]</u>
 
             <footer>
               Details for <a href="http://babeljs.io/docs/learn-es2015/#default-rest-spread">ES2015</a>
-              et <a href="https://github.com/sebmarkbage/ecmascript-rest-spread#readme">ES2017</a>
+              and <a href="https://github.com/sebmarkbage/ecmascript-rest-spread#readme">ES2017</a>
             </footer>
           </section>
 
@@ -471,7 +465,7 @@ days.push('Friday')
 const mapStateToProps = <u>({ goals, currentUser }) => ({ goals, currentUser })</u>
             </code></pre>
 
-            <p>Possible shorthands, ideal for predicates, filters, transforms…</p>
+            <p>Ideal for predicates, filters, transforms…</p>
 
             <pre data-keep-tags="u"><code class="language-js">
 [12, 18, 21, 23].map(<u>(hour) => [hour, 0, 0]</u>)
@@ -482,7 +476,7 @@ return state.map(<u>(goal) => goal.id === newGoal.id ? newGoal : goal</u>)
             </code></pre>
 
             <footer>
-              * Nor <code>arguments</code>, <code>super</code> and <code>new.target</code>.  An arrow function cannot be used as a constructor or allow for function binding
+              * Nor <code>arguments</code>, <code>super</code> and <code>new.target</code>.  Can’t be used as a constructor or bound
               •
               <a href="http://babeljs.io/docs/learn-es2015/#arrows-and-lexical-this">Details</a>
             </footer>
@@ -518,7 +512,7 @@ m<u>.size</u>      // => 1
 
         <section>
           <section id="async">
-            <h1>Asynchronous</h1>
+            <h1>Asynchrony</h1>
             <h3>is easy</h3>
           </section>
 
@@ -546,18 +540,16 @@ m<u>.size</u>      // => 1
 somePromise.then(value => processing)
 
 // Processing can return a fixed value: turned into a fulfilled promise…
-getJSON('/meta').then(res => <u>res.user_url</u>)
+getJSON('/meta').then((res) => <u>res.user_url</u>)
 // …or return another promise, inserted in the chain
-getJSON('/')
-  .then(res => <u>getJSON(res.user_url)</u>)
-  .then(console.log)
+getJSON('/').then((res) => <u>getJSON(res.user_url)</u>).then(console.log)
             </code></pre>
 
             <p>Actually <strong>2</strong> arguments: callbacks for success <strong>and failure</strong></p>
 
             <pre><code data-keep-tags="u" class="language-js">
 getJSON('/meta')
-  .then(res => getJSON(res.user_url))
+  .then((res) => getJSON(res.user_url))
   .then(console.log<u>, console.error</u>)
   .then(releaseConnection)
             </code></pre>
@@ -569,24 +561,20 @@ getJSON('/meta')
           <section id="promises-catch">
             <h2>Promises: <code>catch</code></h2>
 
-            <p>Beware: 2 callbacks at the same level are <strong>mutually exclusive</strong>.</p>
+            <p>Beware: same-level callbacks are <strong>mutually exclusive</strong>.</p>
 
             <pre><code class="language-js">
 getJSON(res.user_url).then(
-  res => res.fouleNayme.split('/'), // Blam!
+  (res) => res.fouleNayme.split('/'), // Blam!
   console.error // Never called
 )
 
-getJSON(res.user_url)
-  .then(res => res.fouleNayme.split('/')) // Blam!
+getJSON(res.user_url).then((res) => res.fouleNayme.split('/')) // Blam!
   .then(console.log, console.error) // console.error called!
             </code></pre>
 
-            <p><code>then(null, errorHandling)</code> is fugly…</p>
-
             <pre><code data-keep-tags="u" class="language-js">
-getJSON(res.user_url)
-  .then(res => res.fouleNayme.split('/'))
+getJSON(res.user_url).then((res) => res.fouleNayme.split('/'))
   .then(console.log)
   <u>.catch</u>(console.error)
             </code></pre>
@@ -613,6 +601,10 @@ getJSON(res.user_url)
   return ret
 }
             </code></pre>
+          </section>
+
+          <section id="async-functions-2">
+            <h2><code>async</code> / <code>await</code></h2>
 
            <pre><code data-keep-tags="u" class="language-js">
 <u>async</u> function processUserNotebook (request, response) {
@@ -625,16 +617,25 @@ getJSON(res.user_url)
   }
 }
             </code></pre>
+          </section>
+
+          <section id="async-functions-3">
+            <h2><code>async</code> / <code>await</code></h2>
+
+           <pre><code data-keep-tags="u" class="language-js">
+<u>async</u> function listEntries (request, response) {
+  const [tags, entryCount, entries] = <u>await</u> Promise.all([
+    Entry.tags(), Entry.count().exec(), Entry.getEntries(req.query)
+  ])
+  res.render('entries/index', { title: 'Bookmarks', entries, entryCount, tags })
+}
+            </code></pre>
 
             <footer>
               <a href="http://tc39.github.io/ecmascript-asyncawait/">Spec</a> •
               <a href="https://jakearchibald.com/2014/es7-async-functions/">Jake Archibald nails it</a> •
               <a href="http://rossboucher.com/await/">Great presentation by Ross Boucher</a>
             </footer>
-
-            <aside class="notes" data-markdown>
-              - Oui, c'est repiqué verbatim de C# 5.0 (.NET 4.5)
-            </aside>
           </section>
         </section>
 
@@ -648,8 +649,6 @@ getJSON(res.user_url)
             <h2>Exporting stuff</h2>
 
             <p>Langage level; no circular dependencies thanks to <span lang="en">live bindings</span>.</p>
-
-            <p>Strict mode by default (like class bodies).</p>
 
             <table>
               <tbody>
@@ -742,12 +741,7 @@ Promise.all(['toolkit', 'security', 'advanced'].map(System.import))
           <section id="proxies">
             <h2>Proxies</h2>
 
-            <p>
-              Originally, we mostly needed something akin to Python’s
-              <code>__getattr__</code> or Ruby’s <code>method_missing</code>…   We briefly played with a <code>__noSuchMethod__</code> attempt, and finally went all-in on proxies.
-            </p>
-
-            <p>Core idea: possible intercepts of <strong>any interaction</strong> with an object.</p>
+            <p>Possible intercepts of <strong>any interaction</strong> with an object.</p>
 
             <ul>
               <li>Properties (hence methods): read, write, define, delete, test…</li>
@@ -771,7 +765,8 @@ function wrapAsDefensive (obj) {
   return <u>new Proxy(obj, {</u>
     <u>get (target, property, receiver)</u> {
       if (!(property in target)) {
-        throw new ReferenceError(`Property ${property} missing in ${JSON.stringify(target)}`)
+        throw new ReferenceError(
+          `Property ${property} missing in ${JSON.stringify(target)}`)
       }
 
       return <u>Reflect.get(target, property, receiver)</u>
@@ -816,7 +811,7 @@ function wrapAsDefensive (obj) {
           <p><a href="https://hacks.mozilla.org/category/es6-in-depth/" target="_blank">ES6 In Depth</a> (MDN)</p>
           <p><a href="https://ponyfoo.com/articles/tagged/es6-in-depth" target="_blank">ES6 In Depth</a> (Nicolás “Ponyfoo” Bevacqua)</p>
           <p><a href="http://exploringjs.com/" target="_blank">Exploring ES6</a> (Dr. Axel Rauschmayer)</p>
-          <p><a href="#FIXME" target="_blank">Understanding ES6</a> (Nicholas Zakas)</p>
+          <p><a href="https://leanpub.com/understandinges6/read" target="_blank">Understanding ES6</a> (Nicholas Zakas)</p>
           <p><a href="http://lebab.io/" target="_blank">lebab</a> (née xto6)</p>
         </section>
 
